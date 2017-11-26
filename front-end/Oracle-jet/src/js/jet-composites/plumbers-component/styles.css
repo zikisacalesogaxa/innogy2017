@@ -1,0 +1,7 @@
+plumbers-component:not(.oj-complete){
+  visibility: hidden;
+}
+
+plumbers-component{
+
+}
