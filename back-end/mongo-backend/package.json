@@ -1,0 +1,23 @@
+{
+  "name": "mongo-backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "author": "cale",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "*",
+    "cookie-parser": "*",
+    "express": "*",
+    "express-session": "*",
+    "mocha": "*",
+    "mongoose": "*",
+    "morgan": "*"
+  },
+  "devDependencies": {
+    "nodemon": "*"
+  }
+}
