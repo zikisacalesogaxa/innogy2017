@@ -1,7 +1,7 @@
 {
   "name": "plumbers-component",
   "displayName": "plumbers-component",
-  "description": "Describe your component here",
+  "description": "Iterate through json data of plumbers and display in table form",
   "version": "1.0.0",
   "jetVersion": "^4.0.0",
   "properties": {

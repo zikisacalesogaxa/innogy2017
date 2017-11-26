@@ -36,6 +36,7 @@ app.use( (req, res, next) => {
 // App Routes
 app.get('/', (req, res) => {
     let code = res.statusCode;
+	console.log('Fuck');
     res.json({
         code,
         routes: {
@@ -52,7 +53,7 @@ app.use('/api/v2/plumbers/hire', hirePlumber);
 app.use('/api/v2/plumbers/schedules', getSchedules);
 
 // port config
-const port = process.env.PORT || 8080;
+const port = process.env.PORT || 9000;
 app.listen(port, (err) => {
-    (err) ? console.error(err) : console.log('listening on https://locahost:' + port);
+    (err) ? console.error(err) : console.log('listening on https://localhost:' + port);
 });

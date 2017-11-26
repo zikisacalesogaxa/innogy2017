@@ -5,3 +5,7 @@ plumbers-component:not(.oj-complete){
 plumbers-component{
 
 }
+
+.card {
+  background: red;
+}

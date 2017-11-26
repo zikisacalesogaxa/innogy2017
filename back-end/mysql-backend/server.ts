@@ -181,7 +181,7 @@ app.delete('/api/v1/plumbers/delete/:_id', async (req: Request, res: Response, n
 });
 
 // initialize port
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 8001;
 
 app.listen(port, async (error: any) => {
     (error) ? await console.error(error) : await console.log('App running on http://localhost:' + port);

@@ -6,10 +6,20 @@ define(
     ['ojs/ojcore', 'knockout', 'jquery'], function (oj, ko, $) {
     'use strict';
 
-    function _Plumber(firstname, lastname, email) {
+    function _Plumber(id, firstname, lastname, email, cellnumber) {
+        this.cellnumber = "+27" + cellnumber;
         this.firstname = firstname;
         this.lastname = lastname;
         this.email = email;
+        this.id = id;
+        this.fullName = firstname + " " + lastname;
+    }
+
+    function _plumberSchedule(day, slot, employerName, employerNumber) {
+        this.employerNumber = "+27" + employerNumber;
+        this.employerName = employerName;
+        this.slot = slot;
+        this.day = day;
     }
     
     function ExampleComponentModel(context) {
@@ -17,16 +27,51 @@ define(
         self.composite = context.element;
         //Example observable
         self.messageText = ko.observable('plumber component');
+        self.plumberSchedules = ko.observable([]);
         self.plumbers = ko.observable([]);
-
-        $.getJSON('http://localhost:8080/api/v2/plumbers', (data) => {
+        self.plumber = ko.observable([]);
+        let _plumberId = null;
+        
+        $.getJSON('http://localhost:8001/api/v1/plumbers', (data) => {
             let plumbers = data.plumbers;
+            let plumbersholder = [];
+            console.log(plumbers);
             for (let plumber of plumbers) {
-                // console.log(plumber);
-                self.plumbers().push(new _Plumber(plumber.firstName, plumber.lastName, plumber.email));
+                plumbersholder.push(new _Plumber(plumber.ID, plumber.First_Name, plumber.Last_Name, plumber.Email, plumber.CellNumber));
             }
-            console.log(self.plumbers());
-        })
+            self.plumbers(plumbersholder);
+        });
+
+        self.getSchedule = (evt) => {
+            _plumberId = evt.id;
+            $.getJSON('http://localhost:8001/api/v1/plumbers/' + _plumberId, (data) => {
+                let plumber = data.Plumber;
+                let holder = [];
+                self.plumber(new _Plumber(plumber.ID, plumber.First_Name, plumber.Last_Name, plumber.Email, plumber.CellNumber));
+                for(let data of plumber.Schedules) {
+                    holder.push(new _plumberSchedule(data.Day, data.Slot, data.Employer_Name, data.Employer_Number));
+                }
+                self.plumberSchedules(holder);
+            });
+        }
+
+        self.hirePlumber = () => {
+            let data = {
+                employerName: $('.employerName').val(),
+                employerNumber: $('.employerNumber').val(),
+                slot: $('.slot').val(),
+                day: $('.day').val()
+            }
+            $.ajax('http://localhost:8001/api/v1/plumbers/hire/' + _plumberId, {
+                data: JSON.stringify(data),
+                type: "post", contentType: "application/json",
+                success: function (result) {
+                    console.log(result);
+                    alert("Plumber hired");
+                    location.reload();
+                }
+            });
+        }
 
         // context.props.then(function (propertyMap) {
         //     //Store a reference to the properties for any later use
