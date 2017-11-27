@@ -24,13 +24,13 @@ API for plumber management, creating and hiring plumbers
 ## Getting Started ##
 
 ```sh
-git clone <repo name>
+git clone https://github.com/cale312/innogy2017.git
 ```
 
 **Installing dependencies**
 
 ```sh
-cd Innogy2017
+cd innogy2017
 ```
 
 **Starting APIs**
