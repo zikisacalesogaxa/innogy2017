@@ -32,7 +32,7 @@ define(
         self.plumber = ko.observable([]);
         let _plumberId = null;
         
-        $.getJSON('http://localhost:8001/api/v1/plumbers', (data) => {
+        $.getJSON('http://localhost:8080/api/v1/plumbers', (data) => {
             let plumbers = data.plumbers;
             let plumbersholder = [];
             console.log(plumbers);
@@ -44,7 +44,7 @@ define(
 
         self.getSchedule = (evt) => {
             _plumberId = evt.id;
-            $.getJSON('http://localhost:8001/api/v1/plumbers/' + _plumberId, (data) => {
+            $.getJSON('http://localhost:8080/api/v1/plumbers/' + _plumberId, (data) => {
                 let plumber = data.Plumber;
                 let holder = [];
                 self.plumber(new _Plumber(plumber.ID, plumber.First_Name, plumber.Last_Name, plumber.Email, plumber.CellNumber));
@@ -62,7 +62,7 @@ define(
                 slot: $('.slot').val(),
                 day: $('.day').val()
             }
-            $.ajax('http://localhost:8001/api/v1/plumbers/hire/' + _plumberId, {
+            $.ajax('http://localhost:8080/api/v1/plumbers/hire/' + _plumberId, {
                 data: JSON.stringify(data),
                 type: "post", contentType: "application/json",
                 success: function (result) {

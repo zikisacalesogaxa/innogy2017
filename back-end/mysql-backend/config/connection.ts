@@ -7,7 +7,7 @@ import { _scheduleEntity } from '../src/entities/schedules.entity';
 
 let connection: MysqlConnectionOptions = {
     type: 'mysql',
-    host: 'localhost',
+    host: '127.0.0.1',
     port: 3306,
     username: 'root',
     password: 'shannon',

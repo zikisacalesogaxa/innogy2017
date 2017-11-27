@@ -6,7 +6,7 @@ const plumbers_entity_1 = require("../src/entities/plumbers.entity");
 const schedules_entity_1 = require("../src/entities/schedules.entity");
 let connection = {
     type: 'mysql',
-    host: 'localhost',
+    host: '127.0.0.1',
     port: 3306,
     username: 'root',
     password: 'shannon',

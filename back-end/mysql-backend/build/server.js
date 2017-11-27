@@ -172,7 +172,7 @@ app.delete('/api/v1/plumbers/delete/:_id', (req, res, next) => __awaiter(this, v
     });
 }));
 // initialize port
-const port = process.env.PORT || 8001;
+const port = process.env.PORT || 8080;
 app.listen(port, (error) => __awaiter(this, void 0, void 0, function* () {
     (error) ? yield console.error(error) : yield console.log('App running on http://localhost:' + port);
 }));
