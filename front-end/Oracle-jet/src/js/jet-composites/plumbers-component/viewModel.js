@@ -57,8 +57,9 @@ define(
 
         self.hirePlumber = () => {
             let data = {
-                employerName: $('.employerName').val(),
-                employerNumber: $('.employerNumber').val(),
+		employerNumber: $('.employerNumber').val(),
+		employerName: $('.employerName').val(),
+		jobDescription: $('.about').val(),
                 slot: $('.slot').val(),
                 day: $('.day').val()
             }
