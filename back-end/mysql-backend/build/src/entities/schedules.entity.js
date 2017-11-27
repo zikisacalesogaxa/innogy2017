@@ -35,6 +35,10 @@ __decorate([
     __metadata("design:type", String)
 ], _scheduleEntity.prototype, "Slot", void 0);
 __decorate([
+    typeorm_1.Column({ type: 'varchar' }),
+    __metadata("design:type", String)
+], _scheduleEntity.prototype, "Job_Description", void 0);
+__decorate([
     typeorm_1.ManyToOne(type => plumbers_entity_1._plumberEntity, plumber => plumber.Schedules),
     __metadata("design:type", plumbers_entity_1._plumberEntity)
 ], _scheduleEntity.prototype, "Plumber", void 0);

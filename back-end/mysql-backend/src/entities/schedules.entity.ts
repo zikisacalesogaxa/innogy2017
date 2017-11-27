@@ -20,6 +20,9 @@ export class _scheduleEntity {
     @Column({ type: 'varchar' })
     Slot: string;
 
+    @Column({ type: 'varchar' })
+    Job_Description: string;
+
     @ManyToOne( type => _plumberEntity, plumber => plumber.Schedules)
     Plumber: _plumberEntity;
 

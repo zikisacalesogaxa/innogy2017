@@ -129,6 +129,7 @@ app.post('/api/v1/plumbers/hire/:_id', (req, res, next) => __awaiter(this, void 
     if (plumber) {
         let _schedule = new schedules_entity_1._scheduleEntity();
         _schedule.Employer_Number = data.employerNumber;
+        _schedule.Job_Description = data.jobDescription;
         _schedule.Employer_Name = data.employerName;
         _schedule.Slot = data.slot;
         _schedule.Day = data.day;

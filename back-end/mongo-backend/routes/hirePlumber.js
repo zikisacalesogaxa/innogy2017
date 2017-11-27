@@ -13,7 +13,7 @@ router.put('/:_id', (req, res) => {
         slot: data.slot,
         employer: data.employer,
         employerNumber: data.employerNumber,
-        available: true
+        jobDescription: data.jobDescription
     }
 
     _plumbers.findOneAndUpdate({
