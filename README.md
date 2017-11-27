@@ -14,23 +14,23 @@ API for plumber management, creating and hiring plumbers
 		2.2 Starting server
 
 * Prerequisites
-	* [NodeJS]('https://www.nodejs.org')
-	* [npm]()
-	* [git]()
-	* [MySQL]()
-	* [MongoDB]()
+	* [NodeJS](https://www.nodejs.org)
+	* [npm](https://www.npmjs.com/)
+	* [git](https://git-scm.com/)
+	* [MySQL](https://www.mysql.com/)
+	* [MongoDB](https://www.mongodb.com/)
 
 
 ## Getting Started ##
 
 ```sh
-git clone <repo name>
+git clone https://github.com/cale312/innogy2017.git
 ```
 
 **Installing dependencies**
 
 ```sh
-cd Innogy2017
+cd innogy2017
 ```
 
 **Starting APIs**
