@@ -22,7 +22,6 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(cookieParser());
 app.use(logger('dev'));
-app.use(cors);
 
 // cors
 app.use( (req, res, next) => {
@@ -36,7 +35,6 @@ app.use( (req, res, next) => {
 // App Routes
 app.get('/', (req, res) => {
     let code = res.statusCode;
-	console.log('Fuck');
     res.json({
         code,
         routes: {
