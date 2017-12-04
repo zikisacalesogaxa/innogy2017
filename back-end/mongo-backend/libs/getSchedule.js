@@ -3,7 +3,7 @@ module.exports = (plumbers, day, slot) => {
     for (plumber of plumbers) {
         let plumberSchedules = plumber.schedules;
         for (data of plumberSchedules) {
-            if (data.day === day && data.slot === slot && data.available === true) {
+            if (data.day === day && data.slot === slot) {
                 availablePlumbers.push(plumber.firstName);
             }
         }

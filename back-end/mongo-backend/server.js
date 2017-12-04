@@ -8,6 +8,7 @@ const app = express();
 
 // Route files
 const getPlumbers = require('./routes/getPlumbers');
+const getPlumberById = require('./routes/getPlumberById');
 const newPlumber = require('./routes/postPlumbers');
 const hirePlumber = require('./routes/hirePlumber');
 const getSchedules = require('./routes/getSchedules');
@@ -22,33 +23,32 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(cookieParser());
 app.use(logger('dev'));
+app.use(cors());
 
 // cors
 app.use( (req, res, next) => {
     res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Credentials', 'true');
     res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
     res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization, Access-Control-Allow-Credentials');
-    res.header('Access-Control-Allow-Credentials', 'true');
     next();
 });
 
 // App Routes
 app.get('/', (req, res) => {
-    let code = res.statusCode;
     res.json({
-        code,
-        routes: {
-            getAllPlumbers: "/api/v2/plumbers",
-            createNewPlumber: "/api/v2/plumbers",
-            hirePlumbers: "/api/v2/plumbers/:_plumberId",
-            getSchedules: "/api/v2/plumbers/schedules/day/:_day/slot/:_slot"
-        }
+        getAllPlumbers: "/api/v2/plumbers",
+        createNewPlumber: "/api/v2/plumbers/register",
+        getPlumberById: "/api/v2/plumbers/:_plumberId",
+        hirePlumbers: "/api/v2/plumbers/book/:_plumberId",
+        getSchedules: "/api/v2/plumbers/bookings/day/:_day/slot/:_slot"
     });
 });
 app.use('/api/v2/plumbers', getPlumbers);
-app.use('/api/v2/plumbers', newPlumber);
-app.use('/api/v2/plumbers/hire', hirePlumber);
-app.use('/api/v2/plumbers/schedules', getSchedules);
+app.use('/api/v2/plumbers', getPlumberById);
+app.use('/api/v2/plumbers/register', newPlumber);
+app.use('/api/v2/plumbers/book', hirePlumber);
+app.use('/api/v2/plumbers/bookings', getSchedules);
 
 // port config
 const port = process.env.PORT || 9000;

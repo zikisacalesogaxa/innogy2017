@@ -8,10 +8,7 @@ router.get('/', (req, res) => {
     let code = res.statusCode;
     _Plumbers.find({})
         .then( (plumbers) => {
-            res.json({
-                code,
-                plumbers
-            });
+            res.json(plumbers);
         })
         .catch( (err) => {
             res.json({

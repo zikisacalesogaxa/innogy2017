@@ -6,17 +6,22 @@ const router = express.Router();
 let _plumbers = require('../models/plumber.model');
 
 router.get('/day/:_day/slot/:_slot', (req, res) => {
-    let code = res.statusCode;
-    let day = req.params._day;
     let slot = req.params._slot;
+    let day = req.params._day;
+    let code = res.statusCode;
     
     _plumbers.find({})
     .then((plumbers) => {
         let schedules = getSchedules(plumbers, day, slot);
             res.json({
-                code,
                 schedules
             });
+        })
+        .catch((err) => {
+            res.json({
+                code,
+                err
+            })
         })
 
 });

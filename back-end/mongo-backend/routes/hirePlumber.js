@@ -5,9 +5,9 @@ const router = express.Router();
 const _plumbers = require('../models/plumber.model');
 
 router.put('/:_id', (req, res) => {
-    let code = res.statusCode;
-    let data = req.body;
+    let code = req.statusCode;
     let _id = req.params._id;
+    let data = req.body;
     let schedule = {
         day: data.day,
         slot: data.slot,
@@ -29,10 +29,21 @@ router.put('/:_id', (req, res) => {
         })
         .then((plumber) => {
             res.json({
-                code,
                 plumber
             });
         })
+        .catch((err) => {
+            res.json({
+                code,
+                err
+            });
+        })
+    })
+    .catch((err) => {
+        res.json({
+            code,
+            err
+        });
     })
 });
 

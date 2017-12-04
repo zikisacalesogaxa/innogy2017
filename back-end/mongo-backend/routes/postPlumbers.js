@@ -22,8 +22,13 @@ router.post('/', (req, res) => {
             })
             .then( (plumber) => {
                 res.json({
-                    code,
                     plumber
+                });
+            })
+            .catch((err) => {
+                res.json({
+                    code,
+                    err
                 });
             })
         } else {
@@ -32,6 +37,12 @@ router.post('/', (req, res) => {
                 msg: 'Username already exists!'
             });
         }
+    })
+    .catch((err) => {
+        res.json({
+            code,
+            err
+        });
     })
 });
 

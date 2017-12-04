@@ -1,0 +1,7 @@
+a {
+    color: ghostwhite;
+    text-decoration: none;
+}
+a:hover {
+    color: whitesmoke;
+}

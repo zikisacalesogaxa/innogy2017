@@ -3,23 +3,24 @@ import { Http } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 
 @Injectable()
-export class PlumbersService {
+export class PlumberScheduleService {
 
     private PlumbersUrl = 'http://localhost:9000/api/v2/plumbers';
-    plumbersArray: any;
+    plumberScheduleObjArr: any;
 
     constructor(private http: Http) { }
 
-    getPlumbers() {
-        this.plumbersArray = [];
+    getSchedules(id: number) {
+        this.plumberScheduleObjArr = [];
         return this.http.get(this.PlumbersUrl)
             .toPromise()
             .then(response => {
-                // let plumbers = response;
-                response.json().forEach(element => {
-                    console.log(element);
+                response.json().forEach(plumber => {
+                    if (plumber._id === Number(id)) {
+                        this.plumberScheduleObjArr.push(plumber.Schedules);
+                    }
                 });
-
+                return this.plumberScheduleObjArr;
             })
             .catch(this.handleError);
     }
