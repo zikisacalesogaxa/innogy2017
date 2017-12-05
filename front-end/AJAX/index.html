@@ -14,9 +14,10 @@
     <script src="javascripts/jquery/jquery.min.js"></script>
     <script src="javascripts/jquery/jquery.js"></script>
     <script src="stylesheets/bootstrap/js/bootstrap.js"></script>
+    <script src="javascripts/knockout-3.4.2.js"></script>
 </head>
 <!-- Navigation -->
-<nav class="navbar navbar-default bg-warning navbar-fixed-top" style="box-shadow: 0px 1px 10px black">
+<nav class="navbar navbar-default bg-warning navbar-fixed-top" style="box-shadow: 0px 1px 10px grey">
     <div class="navbar-header text-light">
         <a href="/">
             <strong>Dial-A-Plumber
@@ -24,7 +25,7 @@
             </strong>
         </a>
     </div>
-
+    
     <div class="navbar-right text-light">
         <ul class="nav">
             <li class="nav-link">
@@ -37,6 +38,46 @@
     </div>
 </nav>
 <body>
-    
+    <div class="container text-center">
+        <h1 style="letter-spacing: .5em;"><strong>Plumbers</strong></h1>
+        <hr width="200">
+        <div data-bind="foreach: plumbers" class="row">
+            <div class="card col-md-5" data-bind="attr: {title: firstName}, click: $root.viewSchedules">
+                <div class="card-body">
+                    <div class="card-title">
+                        <h1>
+                            <span data-bind="text: firstName"></span>
+                            <strong data-bind="text: lastName"></strong>
+                        </h1>
+                    </div>
+                    <hr>
+                    <p data-bind="text: email"></p>
+                    tel : +27<span data-bind="text: cellNumber"></span>
+                </div>
+                <input type="button" value="View Schedules" class="btn btn-block btn-lg btn-outline-warning">
+                <hr class="invisible">
+            </div>
+            <hr class="invisible">
+        </div>
+    </div>
+    <hr class="invisible">
+    <div class="container">
+        <table class="table table-striped table-hover" data-bind="visible: selectedPlumberSchedules().length > 0" style="text-transform: capitalize;">
+            <h2>Current <strong>Bookings</strong></h2>
+            <thead>
+                <tr><th>Employer Name</th><th>Employer Number</th><th>Job Description</th><th>Slot</th><th>Day</th></tr>
+            </thead>
+            <tbody data-bind="foreach: selectedPlumberSchedules">
+                <tr>
+                    <td data-bind="text: employerName"></td>
+                    <td data-bind="text: employerNumber"></td>
+                    <td data-bind="text: jobDescription"></td>
+                    <td data-bind="text: slot"></td>
+                    <td data-bind="text: day"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </body>
 </html>
+<script src="javascripts/main.js"></script>

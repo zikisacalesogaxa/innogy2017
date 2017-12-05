@@ -1,2 +1,4 @@
 nav a { color: white; }
 nav a:hover { text-decoration: none; color: grey; }
+.card:hover { cursor: pointer; box-shadow: 2px 2px 2px grey; }
+.btn { cursor: pointer; }
