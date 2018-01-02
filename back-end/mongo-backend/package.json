@@ -16,7 +16,8 @@
     "express-session": "*",
     "mocha": "*",
     "mongoose": "*",
-    "morgan": "*"
+    "morgan": "*",
+    "node": "*"
   },
   "devDependencies": {
     "nodemon": "*"
