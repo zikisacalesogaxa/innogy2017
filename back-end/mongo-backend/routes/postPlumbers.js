@@ -16,7 +16,7 @@ router.post('/', (req, res) => {
             _Plumbers.create({
                 firstName: data.firstName,
                 lastName: data.lastName,
-                username: data.username,
+                userName: data.username,
                 email: data.email,
                 cellNumber: data.cellNumber
             })
