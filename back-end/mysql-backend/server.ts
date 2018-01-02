@@ -42,7 +42,7 @@ app.get('/', (req: Request, res: Response, next: NextFunction) => {
         routes: {
             getPlumbers : '/api/v1/plumbers',
             createPlumbers : '/api/v1/plumber',
-            getPlumberById : '/api/v1/plumber/:_id',
+            getPlumberById : '/api/v1/plumbers/:_id',
             getPlumbersByDay : '/api/v1/plumbers/schedules/:_day',
             hirePlumber : '/api/v1/plumbers/hire/:_id',
             deletePlumber : '/api/v1/plumbers/delete/:_id'
