@@ -23,6 +23,7 @@ function AppViewModel() {
     const self = this;
     self.plumbers = ko.observable([]);
     self.selectedPlumberSchedules = ko.observable([]);
+    let selectedPlumber = null;
 
     $.getJSON(apiUrl, (plumbers) => {
         let plumbersArr = [];
@@ -36,13 +37,41 @@ function AppViewModel() {
         let plumberSchedules = [];
         let plumberId = evt.id;
         $.getJSON(apiUrl + plumberId, (plumber) => {
-            console.log(plumber);
+            // console.log(plumber);
             let schedules = plumber.schedules;
             schedules.forEach( (data) => {
                 plumberSchedules.push(new _PlumberSchedule(data.day, data.slot, data.jobDescription, data.employerNumber, data.employer));
             }, self);
             return self.selectedPlumberSchedules(plumberSchedules);
         });
+    }
+
+    self.selectedPlumber = (evt) => {
+        selectedPlumber = evt;
+    }
+
+    self.bookPlumber = () => {
+        let _plumberId = selectedPlumber.id
+        let data = {
+            employerNumber: $('.employerNumber').val(),
+            employer: $('.employerName').val(),
+            jobDescription: $('.about').val(),
+            slot: $('.slot').val(),
+            day: $('.day').val()
+        }
+        $.ajax(apiUrl + 'book/' + _plumberId, {
+            data: JSON.stringify(data),
+            type: "PUT", contentType: "application/json",
+            success: function (result) {
+                console.log(result);
+                alert("Plumber hired");
+                location.reload();
+            }
+        });
+    }
+
+    self.registerPlumber = () => {
+        alert("test");
     }
 }
 
