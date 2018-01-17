@@ -37,7 +37,6 @@ function AppViewModel() {
         let plumberSchedules = [];
         let plumberId = evt.id;
         $.getJSON(apiUrl + plumberId, (plumber) => {
-            // console.log(plumber);
             let schedules = plumber.schedules;
             schedules.forEach( (data) => {
                 plumberSchedules.push(new _PlumberSchedule(data.day, data.slot, data.jobDescription, data.employerNumber, data.employer));
@@ -71,7 +70,22 @@ function AppViewModel() {
     }
 
     self.registerPlumber = () => {
-        alert("test");
+        let data = {
+            cellNumber: $('.Cellnumber').val(),
+            firstName: $('.firstName').val(),
+            lastName: $('.lastName').val(),
+            username: $('.Username').val(),
+            email: $('.Email').val()
+        }
+        $.ajax(apiUrl + 'register', {
+            data: JSON.stringify(data),
+            type: "POST", contentType: "application/json",
+            success: function (result) {
+                console.log(result);
+                alert("Registration Successful");
+                location.reload();
+            }
+        });
     }
 }
 
