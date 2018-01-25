@@ -8,6 +8,7 @@ API for plumber management, creating and hiring plumbers
 * front-end - Angular and Oracle Jet
 
 **Table of contents**
+
 	1. Prerequisites
 	2. Getting started
 		2.1 Installing dependencies
