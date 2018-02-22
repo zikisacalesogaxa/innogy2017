@@ -1,4 +1,5 @@
 # Plumbers - Innogy Code Challenge
+[![Build Status](https://travis-ci.org/cale312/innogy2017.svg?branch=master)](https://travis-ci.org/cale312/innogy2017)
 
 API using MongoDB as database
 
