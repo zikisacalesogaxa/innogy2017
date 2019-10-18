@@ -10,7 +10,7 @@ let connection: MysqlConnectionOptions = {
     host: '127.0.0.1',
     port: 3306,
     username: 'root',
-    password: 'shannon',
+    password: 'x[,>G>JQq2W{taNBl1:K',
     database: 'innogy2017',
     entities: [
         _plumberEntity,
