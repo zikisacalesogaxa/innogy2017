@@ -96,7 +96,7 @@ app.post('/api/v1/plumbers', async (req: Request, res: Response, next: NextFunct
     } else {
         res.json({
             code,
-            msg: 'Username already exist'
+            msg: 'Username already taken'
         });
         next();
     }

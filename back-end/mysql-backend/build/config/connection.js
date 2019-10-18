@@ -9,7 +9,7 @@ let connection = {
     host: '127.0.0.1',
     port: 3306,
     username: 'root',
-    password: 'shannon',
+    password: 'x[,>G>JQq2W{taNBl1:K',
     database: 'innogy2017',
     entities: [
         plumbers_entity_1._plumberEntity,

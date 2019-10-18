@@ -96,7 +96,7 @@ app.post('/api/v1/plumbers', (req, res, next) => __awaiter(this, void 0, void 0,
     else {
         res.json({
             code,
-            msg: 'Username already exist'
+            msg: 'Username already taken'
         });
         next();
     }
